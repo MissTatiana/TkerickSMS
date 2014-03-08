@@ -1,6 +1,19 @@
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
 							BODY
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
+
+/* COLORS
+*
+* Tan - cdc4bb 205, 196, 187
+* Brown - 4e4a49 78, 74, 73
+* Pale Green - cbd1c7 203, 209, 199
+* Light Tan - ccc7c1 204, 199, 193
+* Pale - dfdcd7 223, 220, 215
+*
+*/
+
+
+
 body {
 	text-align: center;
 	font-size: 62.5%;
@@ -18,23 +31,119 @@ body {
 							FONTS
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
 
-h1, h2, h3, h4. h5 {
+h1, h2, h3, h4, h5 {
 	font-family: 'Niconne', cursive;
+}
+
+h3 {
+	font-size: 2.500em;
 }
 
 p, a {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: 1.400em;
 }
 
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
 							Header	
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
+#header {
+	width: 960px;
+	background: url(../assets/img/header-bg.png);
+}
 
+#logo {
+	position: relative;
+	z-index: 10;
+	top: 40px;
+	left: 220px;
+}
+
+/*	=	=	=	=	NAVIGATION 	=	=	=	=	*/
+#nav {
+	background: rgba(204, 199, 193, .06);
+	position: relative;
+	z-index: 9;
+	margin: 0 0 0 40px;
+}
+
+#nav ul {
+	list-style-type: none;
+	padding: 10px 0 0 0;
+	margin: 0;
+	display: block;
+}
+
+#nav li {
+	float: left;
+	text-align: center;
+	padding: 10px 20px 0 20px;
+}
+
+.blank {
+	margin: 0 160px 0 50px;
+}
+
+#nav li a {
+	text-decoration: none;
+	color: #4e4a49;
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: 1.800em;
+}
+
+#nav li a:hover {
+	color: #cdc4bb;
+	border-bottom: 1px solid #cdc4bb;
+}
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
-								
+							Sign in 
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
+
+#signInDiv-overlay {
+	color: #000;
+}
+
+#signInDiv {
+	display: none;
+	position: absolute;
+	z-index: 11;
+	margin: 0 0 0 350px;
+	background: #dfdcd7;
+	width: 300px;
+	height: 160px;
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, .06);
+	-moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, .06);
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, .06);
+}
+
+#signInDiv h3 {
+	padding: 10px 0 0 10px;
+}
+
+#signIn {
+	margin: 10px 0 0 15px;
+}
+
+label {
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: 1.400em;
+	width: 70px;
+	float: left;
+	text-align: right;
+	margin: 12px 5px 0 0;
+}
+
+.sinput {
+	width: 160px;
+	height: 20px;
+	margin: 5px 0 0 0;
+}
+
+#signBtn {
+	margin: 15px 0 0 190px;
+}
 
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=

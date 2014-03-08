@@ -14,13 +14,44 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-    <script type="text/javascript" src="js/demo.js"></script>
+    <!--<script type="text/javascript" src="js/demo.js"></script>
     <script type="text/javascript" src="js/swfobject.js"></script>
-    <script type="text/javascript" src="js/sms_setup.js"></script>
+    <script type="text/javascript" src="js/sms_setup.js"></script>-->
 </head>
 
 <body>
 <div class="wrap">
+
+    <div id="header">
+        <img id="logo" src="assets/img/Logo.png" />
+
+        <div id="nav">
+            <ul id="navUl">
+                <li><a href="#">Videos</a></li>
+                <li><a href="#">About</a></li>
+                
+                <li class="blank"><a href="#">&nbsp;</a></li>
+                <li class="blank"><a href="#">&nbsp;</a></li>
+
+                <li><a href="#" id="signInLink">Sign in</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </div><!-- nav -->
+    </div><!-- header -->
+
+    <div id="signInDiv">
+        <h3>Sign In</h3>
+        <form id="signIn" method="post">  
+            <label for="logUser">Username:</label>
+            <input type="text" id="logUser" class="sinput" name="logUser" />
+            <br />
+            <label for="logPass">Password:</label>
+            <input type="text" id="logPass" class="sinput" name="logPass" />
+            <br />
+            <input type="submit" id="signBtn" class="btn" />
+        </form>
+    </div><!-- signInDiv -->
+
     <!-- <div style="width: 640px; height: 480px;">
         <div id="flashContent">
             <script type="text/javascript">
@@ -30,8 +61,12 @@
         </div>
     </div> -->
 
-    <h1>TESTING!</h1>
-
 </div><!-- wrap -->
+<!-- JQUERY -->
+<script type="text/javascript" src="js/jquery.js"></script>
+<!-- SIMPLE MODAL -->
+<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
+<!-- MAIN -->
+<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>
