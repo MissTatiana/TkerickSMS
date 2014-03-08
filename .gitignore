@@ -1,0 +1,6 @@
+*.txt
+.DS_Store
+log/*.log
+assets/psd/
+assets/video/
+
