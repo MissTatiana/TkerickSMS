@@ -33,24 +33,58 @@
                 <li class="blank"><a href="#">&nbsp;</a></li>
                 <li class="blank"><a href="#">&nbsp;</a></li>
 
-                <li><a href="#" id="signInLink">Sign in</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="#signin_form" id="signin_pop">Sign in</a></li>
+                <li><a href="#reg_form" id="reg_pop">Register</a></li>
             </ul>
         </div><!-- nav -->
     </div><!-- header -->
 
-    <div id="signInDiv">
+    <!-- SIGN IN POP UP-->
+    <a href="#x" class="overlay" id="signin_form"></a>
+    <div class="popup">
         <h3>Sign In</h3>
-        <form id="signIn" method="post">  
-            <label for="logUser">Username:</label>
-            <input type="text" id="logUser" class="sinput" name="logUser" />
-            <br />
-            <label for="logPass">Password:</label>
-            <input type="text" id="logPass" class="sinput" name="logPass" />
-            <br />
-            <input type="submit" id="signBtn" class="btn" />
-        </form>
-    </div><!-- signInDiv -->
+        <div>
+            <label for="usernameLog">Username:</label>
+            <input type="text" id="usernameLog" name="usernameLog" />
+        </div>
+        <div>
+            <label for="passLog">Password:</label>
+            <input type="password" id="passLog" name="passLog" />
+        </div>
+        <input type="submit" value="Sign In" class="btn" id="signinBtn" />
+
+        <a class="close" href="#close"></a>
+    </div>
+
+    <!-- REGISTER POP UP -->
+    <a href="#x" class="overlay" id="reg_form"></a>
+    <div class="popup">
+        <h3>Register</h3>
+        <p>please provide us with your information</p>
+        <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" />
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" />
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
+        </div>
+        <div>
+            <label for="firstname">First name:</label>
+            <input type="text" id="firstname" name="firstname" />
+        </div>
+        <div>
+            <label for="lastname">Last name:</label>
+            <input type="text" id="lastname" name="lastname" />
+        </div>
+        <input type="submit" class="btn" id="regBtn" value="Register" />
+
+    <a class="close" href="#close"></a>
+    </div>
 
     <!-- <div style="width: 640px; height: 480px;">
         <div id="flashContent">
