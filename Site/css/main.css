@@ -17,7 +17,8 @@
 body {
 	text-align: center;
 	font-size: 62.5%;
-	/*background: url();*/
+	background: url(../assets/img/green_cup.png);
+	height: 2000px;	
 }
 
 .wrap {
@@ -69,6 +70,10 @@ body {
 
 h1, h2, h3, h4, h5 {
 	font-family: 'Niconne', cursive;
+}
+
+h1 {
+	font-size: 3.000em;
 }
 
 h3 {
@@ -131,6 +136,11 @@ p, a {
 #nav li a:hover {
 	color: #cdc4bb;
 	border-bottom: 1px solid #cdc4bb;
+}
+
+.selected {
+	color: #cbd1c7;
+	border-bottom: 1px solid #cbd1c7;
 }
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
@@ -262,14 +272,91 @@ label {
 }
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
-								
+							CLASS CONTENT
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
 
+.content {
+	clear: left;
+	float: none;
+	margin: 70px 0 0 50px;
+}
+
+.content h1 {
+	margin: 0 0 15px 0;
+}
 
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
-								
+							VIDEO STUFF
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
+
+.video {
+	width: 640px;
+	height: 480px;
+	background-color: #000;
+}
+
+.controlBar {
+	background-color: rgba(203, 209, 199, 0.8);
+	width: 640px;
+	height: 50px;
+	position: absolute;
+	top: 746px;
+}
+
+.controls {
+	margin: 10px 0 0 10px;
+}
+
+.play {
+   width: 0; 
+   height: 0; 
+   position: absolute;
+   float: left;
+
+   border-bottom: 30px solid #cdc4bb; 
+   border-left: 15px solid transparent; 
+   border-right: 15px solid transparent; 
+
+   -webkit-transform: rotate(90deg);
+   -moz-transform: rotate(90deg);
+   -ms-transform: rotate(90deg);
+   -o-transform: rotate(90deg);
+   transform: rotate(90deg);
+}
+
+.play:hover {
+	border-bottom: 35px solid #4e4a49; 
+}
+
+.bar {
+	width: 300px;
+	height: 8px;
+	float: left;
+
+	background-color: #000;
+	position: absolute;
+	margin: 10px 0 0 45px;
+}
+
+.playedBar {
+	width: 150px;
+	height: 8px;
+	position: absolute;
+	z-index: 10;
+
+	background-color: #cdc4bb;
+}
+
+.sphere {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+
+	background-color: #4e4a49;
+	z-index: 11;
+	position: absolute;
+}
 
 
 

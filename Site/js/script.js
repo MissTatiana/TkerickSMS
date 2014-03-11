@@ -1,10 +1,11 @@
 $(document).ready(function() {
 
-	jQuery(function ($) {
-		$('#signInLink').click(function (e) {
-			$('#signInDiv').modal();
-			return false;
-		})
-	});//jquery function
+	// COLORING CURRENT PAGE
+	$(document).ready(function(){
+	    $('#navUL a').each(function(index) {
+	        if(this.href.trim() == window.location)
+	            $(this).addClass("selected");
+	    });
+	});
 
 })//end document
