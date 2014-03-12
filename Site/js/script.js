@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
-	// COLORING CURRENT PAGE
-	$(document).ready(function(){
-	    $('#navUL a').each(function(index) {
-	        if(this.href.trim() == window.location)
-	            $(this).addClass("selected");
-	    });
-	});
+	var flashReady = function() {
+
+		$("#play").on('click', function() {
+			
+			flash.connect('rtmp://localhost');
+
+		});
+	};
 
 })//end document

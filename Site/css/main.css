@@ -294,6 +294,8 @@ label {
 	width: 640px;
 	height: 480px;
 	background-color: #000;
+	float: left;
+	margin-bottom: 70px;
 }
 
 .controlBar {
@@ -309,24 +311,17 @@ label {
 }
 
 .play {
-   width: 0; 
-   height: 0; 
+   /*width: 0; 
+   height: 0; */
    position: absolute;
    float: left;
 
-   border-bottom: 30px solid #cdc4bb; 
-   border-left: 15px solid transparent; 
-   border-right: 15px solid transparent; 
-
-   -webkit-transform: rotate(90deg);
-   -moz-transform: rotate(90deg);
-   -ms-transform: rotate(90deg);
-   -o-transform: rotate(90deg);
-   transform: rotate(90deg);
 }
 
 .play:hover {
-	border-bottom: 35px solid #4e4a49; 
+	-webkit-transform: rotate(10deg);
+	-moz-transform: rotate(10deg);
+	transform: rotate(10deg);
 }
 
 .bar {
@@ -356,15 +351,119 @@ label {
 	background-color: #4e4a49;
 	z-index: 11;
 	position: absolute;
+	margin: -1px 0 0 0;
 }
 
+.volumeBtn {
+	position: absolute;
+	float: left;
+	height: 150px;
 
+	padding-top: 50px;
+	margin: -50px 0 0 400px;
+}
+
+#volume {
+	width: 8px;
+	height: 90px;
+
+	background-color: #cbd1c7;
+
+	position: absolute;
+	bottom: 160px;
+	right: 15px;
+	visibility: hidden;
+}
+
+.volumeBtn:hover #volume {
+	visibility: visible;
+
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);;
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);;
+}
+
+#volume .sphere {
+	background-color: #000;
+	border: 2px solid #4e4a49;
+	margin: 0 0 0 -3px;
+}
+
+.record {
+	position: absolute;
+	float: left;
+
+	margin: 0 0 0 450px;
+}
+
+.camSet {
+	position: absolute;
+	float: left;
+
+	margin: 0 0 0 505px;
+}
+
+.micSet {
+	position: absolute;
+	float: left;
+
+	margin: 0 0 0 560px;
+}
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
-								
+						STUFF AROUND THE VIDEO
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
 
 
+/*	=	=	=	=	INFO	=	=	=	=	*/
+.videoInfo {
+	margin: 10px 0 0 650px;
+	height: 480px;
+}
+
+.videoInfo h3 {
+	margin: 10px 0 15px 20px;
+}
+
+.videoInfo p {
+	margin: 0 0 5px 20px;
+	text-indent: 20px;
+}
+
+/*	=	=	=	=	Comments	=	=	=	=	*/
+
+.comments {
+	clear: left;
+}
+
+.comments h3 {
+	margin: 15px 0 15px 0;
+}
+
+#commentSub {
+	margin: 10px 0 0 535px;
+}
+
+.userComment {
+	width: 640px;
+	height: 160px;
+
+	border: 1px solid #222;
+	margin: 0 0 10px 0 ;
+}
+
+.userImg {
+	width: 100px;
+	height: 100px;
+	float: left;
+
+	background-color: #222;
+	margin: 20px 10px 0 20px;
+}
+
+.words {
+	margin: 30px 0 20px 20px;
+}
 
 /*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
 								
