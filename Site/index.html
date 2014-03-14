@@ -92,21 +92,21 @@
 
         <h1>About Conseqour</h1>
 
-        <!-- <div style="width: 640px; height: 480px;">
+        <div class="videoFlash" style="width: 640px; height: 480px;">
             <div id="flashContent">
                 <script type="text/javascript">
                     var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://");
                     document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" );
                 </script>
-            </div><!-- flashContent
-        </div> -->
+            </div><!-- flashContent -->
+        </div>
 
         <div class="video">
 
             <div class="controlBar">
             <div class="controls">
-                 <div class="play">
-                    <img src="assets/img/icons/play.png" width="25.4" height="35.7">
+                 <div class="play" data-status="0">
+                    <img id="playBtn" src="assets/img/icons/play.png" width="25.4" height="35.7">
                  </div>
 
                  <div class="bar" id="play">
@@ -197,10 +197,12 @@
     </div><!-- class content -->
 
 </div><!-- wrap -->
+
+<script type="text/javascript" src="js/swfobject.js"></script>
+<script type="text/javascript" src="js/sms_setup.js"></script>
+
 <!-- JQUERY -->
 <script type="text/javascript" src="js/jquery.js"></script>
-<!-- SIMPLE MODAL -->
-<script type="text/javascript" src="js/jquery.simplemodal.js"></script>
 <!-- MAIN -->
 <script type="text/javascript" src="js/script.js"></script>
 </body>

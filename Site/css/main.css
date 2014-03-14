@@ -290,10 +290,10 @@ label {
 							VIDEO STUFF
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
 
+.videoFlash,
 .video {
 	width: 640px;
 	height: 480px;
-	background-color: #000;
 	float: left;
 	margin-bottom: 70px;
 }
@@ -319,9 +319,8 @@ label {
 }
 
 .play:hover {
-	-webkit-transform: rotate(10deg);
-	-moz-transform: rotate(10deg);
-	transform: rotate(10deg);
+	filter: contrast(2);
+	filter: hue-rotate(178deg);
 }
 
 .bar {
