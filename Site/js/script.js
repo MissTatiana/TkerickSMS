@@ -3,18 +3,38 @@
 				Tatiana Kerick
 =			=			=			=			=			*/
 
+
+var played = 0
+var playPause = 0
 var flashReady = function() {
 
 	//PLAY BUTTON
-	$(".play").on('click', function() {
+	$(".play").on("click", function() {
 		
-		flash.connect('rtmp://localhost/SMSServer/');
-		$(".play").attr('data-status', "1");
+		if(played == 0) {
+			flash.connect("rtmp://localhost/SMSServer/");
+		
+			played = 1
+			$("#playBtn").attr("src", "assets/img/icons/pause.png")
+		}
+		else { 
+			flash.playPause();
+
+			//logic for play/pause buttons
+			playPause++;
+			if(playPause % 2 === 0 ) {
+				$("#playBtn").attr("src", "assets/img/icons/pause.png");
+			}
+			else {
+				$("#playBtn").attr("src", "assets/img/icons/play.png")
+			}
+			
+		}
 
 	});//play
 
 	//RECORD BUTTON
-	$(".record").on('click', function() {
+	$(".record").on("click", function() {
 
 	});//record
 
@@ -23,16 +43,13 @@ var flashReady = function() {
 var connected = function(success, error) {
 		
 	if(success == true) {
-		if($(".play").attr("data-status") == 1) {
-			console.log('this is working');
-			flash.startPlaying('startrekintodarkness_vp6.flv');
-		}
-		else {
-			console.log('not the right data-status');
-		}
+		if(played == 1) {
+			console.log("this is working");
+			flash.startPlaying("startrekintodarkness_vp6.flv");
+		}	
 	}
 	else {
-		console.log('shits broke');
+		console.log("shits broke");
 	}
 
 
