@@ -49,31 +49,41 @@ var connected = function(success, error) {
 		}	
 	}
 	else {
-		console.log("shits broke");
+		console.log("Not connected");
 	}
 
 };//connected
 
-var currentTime = 0;
-var seekTime = function(time) {
-	//playing back a video, called 30 times/second
-	//time is the current time of the video
 
-	//black bar w = 300px
-	var xpos = time/durLength * 300;
-	currentTime = xpos/300 * durLength;
-	$("#playedBar").attr("width", xpos);
-	console.log(xpos);
-	document.getElementById("playedBar").style.width = xpos + "px";
-	//$("#playedBar").attr("width", xpos + "px");
-
-};//seekTime
-
+//DURATION OF VIDEO
 var durLength = 0;
 var getDuration = function(duration) {
 	//playback of a video determined
+	
 	durLength = duration;
+	console.log(durLength);
+
+	//CLICK TO CERTAIN POINT IN VIDEO
+	$("#play").on("click", function(a) {
+		xpos = a.pageX - $(this).offset().left;
+		currentTime = xpos/300 * duration; 
+		console.log(currentTime);
+		flash.setTime(currentTime);
+	});//play click
+
 };//getDuration
+
+//PROGRESS OF VIDEO
+var currentTime = 0;
+var seekTime = function(time) {
+	//playing back a video, called 30 times/second
+	//time is the current position of the time during the play of the video
+	var xpos = time/durLength * 300;
+	//set the width of the bar showing progress
+	$(".playedBar").width(xpos);
+
+};//seekTime
+
 
 var recordingError = function(message, code) {
 	//if there is an error while recording
