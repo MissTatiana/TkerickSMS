@@ -334,12 +334,12 @@ label {
 }
 
 .playedBar {
-	width: 150px;
 	height: 8px;
 	position: absolute;
 	z-index: 10;
 
 	background-color: #cdc4bb;
+	width: 0px;
 }
 
 .sphere {

@@ -26,7 +26,7 @@ var flashReady = function() {
 				$("#playBtn").attr("src", "assets/img/icons/pause.png");
 			}
 			else {
-				$("#playBtn").attr("src", "assets/img/icons/play.png")
+				$("#playBtn").attr("src", "assets/img/icons/play.png");
 			}
 			
 		}
@@ -52,16 +52,27 @@ var connected = function(success, error) {
 		console.log("shits broke");
 	}
 
-
-
 };//connected
 
+var currentTime = 0;
 var seekTime = function(time) {
 	//playing back a video, called 30 times/second
+	//time is the current time of the video
+
+	//black bar w = 300px
+	var xpos = time/durLength * 300;
+	currentTime = xpos/300 * durLength;
+	$("#playedBar").attr("width", xpos);
+	console.log(xpos);
+	document.getElementById("playedBar").style.width = xpos + "px";
+	//$("#playedBar").attr("width", xpos + "px");
+
 };//seekTime
 
+var durLength = 0;
 var getDuration = function(duration) {
 	//playback of a video determined
+	durLength = duration;
 };//getDuration
 
 var recordingError = function(message, code) {
