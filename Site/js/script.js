@@ -16,6 +16,9 @@ var playPause = 0;
 var recorded = 0;
 var recordClick = 0;
 
+var selectedCam = 0;
+var selectedMicro = 0;
+
 var flashReady = function() {
 
 	//PLAY BUTTON
@@ -89,7 +92,9 @@ var flashReady = function() {
 
 	var camOptions = flash.getCameras();
 	console.log(camOptions);
-	$(".camOptions").append("<a href='#'>" + camOptions + "</a>");
+	$.each(camOptions, function(j, object) {
+		$(".camOptions").append("<a href='#' data-cam=" + j + " class='selectedCam'>" + object + "</a>")
+	})
 
 	var showCameraList = 0;
 	$("#cameraList").hide();
@@ -108,9 +113,16 @@ var flashReady = function() {
 
 	});//camset
 
+	$(".selectedCam").on("click", function(f) {
+		selectedCam = $(this).attr("data-cam");
+		console.log("selected Cam: " + selectedCam);
+	});//selectedCam
+
 	var microOptions = flash.getMicrophones();
 	console.log(microOptions);
-	$(".microOptions").append("<a href='#'>" + microOptions + "</a><br />");
+	$.each(microOptions, function(i, object) {
+		$(".microOptions").append("<a href='#' data-micro=" + i + " class='selectedMicro'>" + object + "</a>")
+	})
 
 	var showMicroList = 0;
 	$("#microList").hide();
@@ -128,6 +140,11 @@ var flashReady = function() {
 		}
 	});//micSet
 
+	$(".selectedMicro").on("click", function(g) {
+		selectedMicro = $(this).attr("data-micro");
+		console.log("select micro: " + selectedMicro);
+	});//selectedMicro
+
 }; //flash ready
 
 var connected = function(success, error) {
@@ -141,11 +158,8 @@ var connected = function(success, error) {
 		if(recorded == 1) {
 			console.log("recording...");
 			var filename = "Conseqour_Recorded_Video";
-			//hardcoded, need to fix later
-			var cameraIndex = 0;
-			var microphoneIndex = 0;
 
-			flash.startRecording(filename, cameraIndex, microphoneIndex);
+			flash.startRecording(filename, selectedCam, selectedMicro);
 		}	
 	}
 	else {
