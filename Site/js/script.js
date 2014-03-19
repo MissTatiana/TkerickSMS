@@ -3,6 +3,12 @@
 				Tatiana Kerick
 =			=			=			=			=			*/
 
+//toggle volume adjuster
+$(".volumeBtn").on("click", function(b) {
+	b.preventDefault;
+	$("#volume").toggle();
+});//volume click
+
 
 var played = 0
 var playPause = 0
@@ -32,6 +38,20 @@ var flashReady = function() {
 		}
 
 	});//play
+
+	//VOLUME
+	$("#volume").on("click", function(c) {
+		c.preventDefault();
+		flash.getVolume();
+
+		var volClick = c.pageY - $(this).offset().top;
+		flash.setVolume(1- (volClick / 90));
+
+		var volumed = ((volClick / 90)) * 90;
+		$(".volumeSet").height(volumed);
+
+
+	});//volumeBtn click
 
 	//RECORD BUTTON
 	$(".record").on("click", function() {
