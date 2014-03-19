@@ -60,20 +60,25 @@ var flashReady = function() {
 	//RECORD BUTTON
 	$(".record").on("click", function() {
 
-		if(recordClick === 0) {
+		//stop video from playing
+		if(played != 0) {
+			flash.stopPlaying();
+			played = 0
+			$("#playBtn").attr("src", "assets/img/icons/play.png");
+		}
 
-			recordClick = 1;
-			$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
+		if(recorded  == 1) {
+			$("#recordBtn").attr("src", "assets/img/icons/record.png");
+			flash.stopRecording();
+			console.log('stopping..');
+			recorded = 2;
 		}
 		else {
-			recordClick++;
-			if(recordClick % 2 == 0) {
-				$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
-			}
-			else {
-				$("#recordBtn").attr("src", "assets/img/icons/record.png");
-			}
+			flash.connect("rtmp://localhost/SMSServer/");
+			recorded = 1;
+			$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
 		}
+		
 
 	});//record
 
@@ -131,6 +136,16 @@ var connected = function(success, error) {
 		if(played == 1) {
 			console.log("this is working");
 			flash.startPlaying("startrekintodarkness_vp6.flv");
+		}
+
+		if(recorded == 1) {
+			console.log("recording...");
+			var filename = "Conseqour_Recorded_Video";
+			//hardcoded, need to fix later
+			var cameraIndex = 0;
+			var microphoneIndex = 0;
+
+			flash.startRecording(filename, cameraIndex, microphoneIndex);
 		}	
 	}
 	else {
