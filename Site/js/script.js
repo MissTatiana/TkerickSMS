@@ -60,13 +60,27 @@ var flashReady = function() {
 	//RECORD BUTTON
 	$(".record").on("click", function() {
 
-	
+		if(recordClick === 0) {
+
+			recordClick = 1;
+			$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
+		}
+		else {
+			recordClick++;
+			if(recordClick % 2 == 0) {
+				$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
+			}
+			else {
+				$("#recordBtn").attr("src", "assets/img/icons/record.png");
+			}
+		}
 
 	});//record
 
 
-	//CAMERAS AND MICROPHONES
 
+
+	//CAMERAS AND MICROPHONES
 
 	var camOptions = flash.getCameras();
 	console.log(camOptions);

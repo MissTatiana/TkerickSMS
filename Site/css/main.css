@@ -434,7 +434,8 @@ label {
 	padding: 10px 0 0 5px;
 }
 
-#cameraList p {
+#cameraList p,
+#microList p {
 	padding: 5px 0 0 5px;
 }
 
