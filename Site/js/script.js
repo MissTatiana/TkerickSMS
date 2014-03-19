@@ -10,8 +10,12 @@ $(".volumeBtn").on("click", function(b) {
 });//volume click
 
 
-var played = 0
-var playPause = 0
+var played = 0;
+var playPause = 0;
+
+var recorded = 0;
+var recordClick = 0;
+
 var flashReady = function() {
 
 	//PLAY BUTTON
@@ -56,7 +60,54 @@ var flashReady = function() {
 	//RECORD BUTTON
 	$(".record").on("click", function() {
 
+	
+
 	});//record
+
+
+	//CAMERAS AND MICROPHONES
+
+
+	var camOptions = flash.getCameras();
+	console.log(camOptions);
+	$(".camOptions").append("<a href='#'>" + camOptions + "</a>");
+
+	var showCameraList = 0;
+	$("#cameraList").hide();
+	$(".camSet").on("click", function(d) {
+		d.preventDefault();
+
+		showCameraList++;
+		console.log(showCameraList);
+
+		if(showCameraList % 2 === 0) {
+			$("#cameraList").hide();
+		}
+		else {
+			$("#cameraList").show();
+		}
+
+	});//camset
+
+	var microOptions = flash.getMicrophones();
+	console.log(microOptions);
+	$(".microOptions").append("<a href='#'>" + microOptions + "</a><br />");
+
+	var showMicroList = 0;
+	$("#microList").hide();
+	$(".micSet").on("click", function(e) {
+		e.preventDefault(); 
+
+		showMicroList++;
+		console.log(showMicroList);
+
+		if(showMicroList % 2 === 0) {
+			$("#microList").hide();
+		}
+		else {
+			$("#microList").show();
+		}
+	});//micSet
 
 }; //flash ready
 

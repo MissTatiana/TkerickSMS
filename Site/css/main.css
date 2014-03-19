@@ -80,9 +80,15 @@ h3 {
 	font-size: 2.500em;
 }
 
-p, a {
+p, a, span {
 	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
 	font-size: 1.400em;
+}
+
+a {
+	font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+	font-size: 1.000em;
+	color: #000;
 }
 
 
@@ -393,6 +399,43 @@ label {
 	float: left;
 
 	margin: 0 0 0 505px;
+}
+
+#cameraList {
+	position: absolute;
+	width: 150px;
+	height: 75px;
+
+	margin: -100px 0 0 450px;
+
+	background-color: #cdc4bb;
+
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+}
+
+#microList {
+	position: absolute;
+	width: 150px;
+	height: 75px;
+
+	margin: -100px 0 0 470px;
+
+	background-color: #cdc4bb;
+
+	-webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+}
+
+#cameraList span,
+#microList span {
+	padding: 10px 0 0 5px;
+}
+
+#cameraList p {
+	padding: 5px 0 0 5px;
 }
 
 .micSet {
