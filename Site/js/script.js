@@ -234,6 +234,15 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 			"<h3>You've signed in with " + user.provider + "</h3>"
 		);	
 
+		$("#signin_pop").text("Hello, " + user.name + "!");
+
+		$("#signin_pop").css({
+			"cursor" : "pointer",
+			"bottom-border" : "none"
+		});
+
+		$(".blank").css("margin", "0 100px 0 50px");
+
 		/*	=	=	=	CHATTING (only accessable if logged in)	=	=	=	*/
 
 		$("#comment").keypress(function(k) {
