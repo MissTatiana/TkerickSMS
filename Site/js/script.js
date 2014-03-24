@@ -3,6 +3,8 @@
 				Tatiana Kerick
 =			=			=			=			=			*/
 
+var userPic = "";
+
 //toggle volume adjuster
 $(".volumeBtn").on("click", function(b) {
 	b.preventDefault;
@@ -206,4 +208,91 @@ var recordingError = function(message, code) {
 var globalError = function(message) {
 	//if there is a flash error
 };//globalError
+
+
+/*	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=
+					Firebase
+=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
+
+var loggedOn = 0;
+var user = "";
+var userImg = "";
+
+var chatRef = new Firebase('https://torid-fire-6703.firebaseio.com/');
+var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
+	if(error) {
+		//an error occured while attempting login
+		console.log(error);
+	}
+	else if(user) {
+		//user authenticated with Firebase
+		console.log("User ID: " + user.id + ", Provider: " + user.provider);
+
+		$(".loginIcon").css("display", "none");
+
+		$(".popup").append(
+			"<h3>You've signed in with " + user.provider + "</h3>"
+		);	
+
+		/*	=	=	=	CHATTING (only accessable if logged in)	=	=	=	*/
+
+		$("#comment").keypress(function(k) {
+			if(k.keyCode == 13) {
+				k.preventDefault();
+				var img = $(".userImg");
+				var name = user.name;
+				var comment = $("#comment").val()
+				chatRef.push({name: name, text: comment});
+				$("#comment").val('')
+			}
+		});//comment keypress
+
+		chatRef.on('child_added', function(snapshot) {
+			var message = snapshot.val();
+			displayChatMessage(message.name, message.text);
+		});
+
+		function displayChatMessage(name, text) {
+			$("<div class='chatText' />").text(text).prepend(
+				$("<p class='chatName' />").text(name + ": ")).appendTo($("#commentList"));
+			$("#commentList")[0].scrollTop = $("#commentList")[0].scrollHeight;
+		};
+		
+	}
+	else {
+		//user is logged out
+		$("#commentField").css("display", "none");
+		$("#commentFieldNotLog").css("visibility", "visible");
+	}
+})
+
+//Login with facebook
+$("#facebook").on("click", function(h) {
+	h.preventDefault();
+	auth.login('facebook');
+	loggedOn = 1;
+	console.log('logged in with facebook, Logged Status: ' + loggedOn);
+});//facebook
+
+//Login with Tiwtter
+$("#twitter").on("click", function(i) {
+	i.preventDefault();
+	auth.login('twitter');
+	loggedOn = 1;
+	console.log('logged in with twitter, Logged Status: ' + loggedOn);
+});//twitter
+
+
+
+
+
+
+//LOGOUT
+$("#logoutLink").on("click", function(j) {
+	j.preventDefault();
+	console.log('logout');
+	auth.logout();
+	location.reload();
+});
+
 
