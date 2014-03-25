@@ -245,6 +245,9 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 
 		/*	=	=	=	CHATTING (only accessable if logged in)	=	=	=	*/
 
+		$("#commentField").css("visibility", "visible");
+		$("#commentFieldNotLog").css("visibility", "hidden");
+
 		$("#comment").keypress(function(k) {
 			if(k.keyCode == 13) {
 				k.preventDefault();
@@ -270,7 +273,7 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	}
 	else {
 		//user is logged out
-		$("#commentField").css("display", "none");
+		$("#commentField").css("visibility", "hidden");
 		$("#commentFieldNotLog").css("visibility", "visible");
 	}
 })
