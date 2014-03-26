@@ -227,6 +227,7 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 	else if(user) {
 		//user authenticated with Firebase
 		console.log("User ID: " + user.id + ", Provider: " + user.provider);
+		console.log(user);
 
 		$(".loginIcon").css("display", "none");
 
@@ -243,14 +244,27 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 
 		$(".blank").css("margin", "0 100px 0 50px");
 
+		var img = "";
+		if(user.provider == "facebook") {
+			img = "http://graph.facebook.com/" + user.id + "/picture";
+		}
+		else {
+			img = user.avatar_url;
+		}
+		console.log("image: " + img);
+		$(".img").attr("src", img)
+		$(".img").css({
+			"width" : "50px",
+			"height" : "50px"
+		})
+
 		/*	=	=	=	CHATTING (only accessable if logged in)	=	=	=	*/
 
 		//FACEBOOK
 		//http://ww38.graphfacebook.com/1256436303/picture
 
 		//TWITTER PRO PIC
-		//api.twitter.com/1/users/profile_image?screen_name=twitterapi&size=bigger
-
+		//username.avatar_url
 
 		$("#commentField").css("visibility", "visible");
 		$("#commentFieldNotLog").css("visibility", "hidden");
@@ -258,23 +272,32 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 		$("#comment").keypress(function(k) {
 			if(k.keyCode == 13) {
 				k.preventDefault();
-				var img = $(".userImg");
+				
+				var img = ""
+				if(user.provider == "facebook") {
+					img = "http://graph.facebook.com/" + user.id + "/picture";
+				}
+				else {
+					img = user.avatar_url;
+				}
+
 				var name = user.name;
 				var comment = $("#comment").val()
-				chatRef.push({name: name, text: comment});
+				chatRef.push({name: name, img: img, text: comment});
 				$("#comment").val('')
 			}
 		});//comment keypress
 
 		chatRef.on('child_added', function(snapshot) {
 			var message = snapshot.val();
-			displayChatMessage(message.name, message.text);
+			displayChatMessage(message.name, message.img, message.text);
 		});
 
-		function displayChatMessage(name, text) {
+		function displayChatMessage(name, img, text) {
 			$("<div class='chatText' />").text(text).prepend(
-				$("<p class='chatName' />").text(name + ": ")).appendTo($("#commentList"));
+				$("<p class='chatName' />").append("<img class='imgSent' src='" + img + "' />" + user.name + ": ")).appendTo($("#commentList"));
 			$("#commentList")[0].scrollTop = $("#commentList")[0].scrollHeight;
+
 		};
 		
 	}
