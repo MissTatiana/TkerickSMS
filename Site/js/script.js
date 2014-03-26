@@ -245,6 +245,13 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 
 		/*	=	=	=	CHATTING (only accessable if logged in)	=	=	=	*/
 
+		//FACEBOOK
+		//http://ww38.graphfacebook.com/1256436303/picture
+
+		//TWITTER PRO PIC
+		//api.twitter.com/1/users/profile_image?screen_name=twitterapi&size=bigger
+
+
 		$("#commentField").css("visibility", "visible");
 		$("#commentFieldNotLog").css("visibility", "hidden");
 
@@ -282,15 +289,13 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 $("#facebook").on("click", function(h) {
 	h.preventDefault();
 	auth.login('facebook');
-	loggedOn = 1;
 	console.log('logged in with facebook, Logged Status: ' + loggedOn);
 });//facebook
 
 //Login with Tiwtter
-$("#twitter").on("click", function(i) {
+$("#github").on("click", function(i) {
 	i.preventDefault();
-	auth.login('twitter');
-	loggedOn = 1;
+	auth.login('github');
 	console.log('logged in with twitter, Logged Status: ' + loggedOn);
 });//twitter
 
