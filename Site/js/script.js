@@ -26,6 +26,7 @@ var flashReady = function() {
 	//PLAY BUTTON
 	$(".play").on("click", function() {
 		
+		//start playing, toggle pause image
 		if(played == 0) {
 			flash.connect("rtmp://localhost/SMSServer/");
 		
@@ -53,6 +54,7 @@ var flashReady = function() {
 		c.preventDefault();
 		flash.getVolume();
 
+		//measurement for volume slider
 		var volClick = c.pageY - $(this).offset().top;
 		flash.setVolume(1- (volClick / 90));
 
@@ -72,6 +74,7 @@ var flashReady = function() {
 			$("#playBtn").attr("src", "assets/img/icons/play.png");
 		}
 
+		//if recording is going on
 		if(recorded  == 1) {
 			$("#recordBtn").attr("src", "assets/img/icons/record.png");
 			flash.stopRecording();
@@ -79,6 +82,7 @@ var flashReady = function() {
 			recorded = 2;
 		}
 		else {
+			//disconnect
 			flash.connect("rtmp://localhost/SMSServer/");
 			recorded = 1;
 			$("#recordBtn").attr("src", "assets/img/icons/record_stop.png");
@@ -94,11 +98,13 @@ var flashReady = function() {
 
 	var camOptions = flash.getCameras();
 	console.log(camOptions);
+	//list all the options
 	$.each(camOptions, function(j, object) {
 		$(".camOptions").append("<a href='#' data-cam=" + j + " class='selectedCam'>" + object + "</a>")
 	})
 
 	var showCameraList = 0;
+	//show and hide on click
 	$("#cameraList").hide();
 	$(".camSet").on("click", function(d) {
 		d.preventDefault();
@@ -120,6 +126,7 @@ var flashReady = function() {
 		console.log("selected Cam: " + selectedCam);
 	});//selectedCam
 
+	//append the options to list
 	var microOptions = flash.getMicrophones();
 	console.log(microOptions);
 	$.each(microOptions, function(i, object) {
@@ -127,6 +134,7 @@ var flashReady = function() {
 	})
 
 	var showMicroList = 0;
+	//show and hide on clicl
 	$("#microList").hide();
 	$(".micSet").on("click", function(e) {
 		e.preventDefault(); 
@@ -142,6 +150,7 @@ var flashReady = function() {
 		}
 	});//micSet
 
+	//when one is selected
 	$(".selectedMicro").on("click", function(g) {
 		selectedMicro = $(this).attr("data-micro");
 		console.log("select micro: " + selectedMicro);
@@ -149,6 +158,7 @@ var flashReady = function() {
 
 }; //flash ready
 
+//connected to the video player stuff
 var connected = function(success, error) {
 		
 	if(success == true) {
@@ -214,7 +224,6 @@ var globalError = function(message) {
 					Firebase
 =	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	=	*/
 
-var loggedOn = 0;
 var user = "";
 var userImg = "";
 
@@ -311,15 +320,15 @@ var auth = new FirebaseSimpleLogin(chatRef, function(error, user) {
 //Login with facebook
 $("#facebook").on("click", function(h) {
 	h.preventDefault();
-	auth.login('facebook');
-	console.log('logged in with facebook, Logged Status: ' + loggedOn);
+	auth.login("facebook");
+	console.log("logged in with facebook");
 });//facebook
 
 //Login with Tiwtter
 $("#github").on("click", function(i) {
 	i.preventDefault();
-	auth.login('github');
-	console.log('logged in with twitter, Logged Status: ' + loggedOn);
+	auth.login("github");
+	console.log("logged in with twitter");
 });//twitter
 
 
@@ -330,7 +339,7 @@ $("#github").on("click", function(i) {
 //LOGOUT
 $("#logoutLink").on("click", function(j) {
 	j.preventDefault();
-	console.log('logout');
+	console.log("logout");
 	auth.logout();
 	location.reload();
 });
